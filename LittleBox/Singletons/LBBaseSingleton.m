@@ -32,13 +32,13 @@
 }
 
 - (void)initialInit {
-    LBLog(@"%@ initialInit (LBBaseSingleton super method)", NSStringFromClass([self class]));
+    // LBLog(@"%@ initialInit (LBBaseSingleton super method)", NSStringFromClass([self class]));
     self.resettable = YES; // register with LBSingletonResetManager by default
     self.resetOrder = LBResetOrderGroup5; // with the middle order (5 out of 10) by default
 }
 
 - (void)reusableInit {
-    LBLog(@"%@ reusableInit (LBBaseSingleton super method)", NSStringFromClass([self class]));
+    // LBLog(@"%@ reusableInit (LBBaseSingleton super method)", NSStringFromClass([self class]));
     if (self.resettable) {
         if (self.resetOrder > 0) {
             [LBSingletonResetManager addDelegate:self withOrder:self.resetOrder];
@@ -49,21 +49,21 @@
 }
 
 - (void)reusableTeardown {
-    LBLog(@"%@ reusableTeardown (LBBaseSingleton super method)", NSStringFromClass([self class]));
+    // LBLog(@"%@ reusableTeardown (LBBaseSingleton super method)", NSStringFromClass([self class]));
 }
 
 - (void)finalTeardown {
-    LBLog(@"%@ finalTeardown (LBBaseSingleton super method)", NSStringFromClass([self class]));
+    // LBLog(@"%@ finalTeardown (LBBaseSingleton super method)", NSStringFromClass([self class]));
 }
 
 - (void)reset {
-    LBLog(@"%@ reset (LBBaseSingleton super method)", NSStringFromClass([self class]));
+    // LBLog(@"%@ reset (LBBaseSingleton super method)", NSStringFromClass([self class]));
     [self reusableTeardown];
     [self reusableInit];
 }
 
 - (void)dealloc {
-    LBLog(@"%@ dealloc (LBBaseSingleton super method)", NSStringFromClass([self class]));
+    // LBLog(@"%@ dealloc (LBBaseSingleton super method)", NSStringFromClass([self class]));
     [self reusableTeardown];
     [self finalTeardown];
 }

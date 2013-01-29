@@ -199,7 +199,6 @@
     [formatter setRoundingMode:NSNumberFormatterRoundHalfUp];
     [formatter setMaximumFractionDigits:0];
     NSNumber *rounded = [formatter numberFromString:[formatter stringFromNumber:epochMillis]];
-    LBLog(@"epochMillisFromDate rounded %@ to %@", epochMillis, rounded);
     return rounded;
 }
 

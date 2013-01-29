@@ -106,7 +106,7 @@
             if ([kvPair count] > 1) {
                 strVal = [self URLDecodedStringFromString:(NSString *)[kvPair objectAtIndex:1]];
             }
-            if ([params objectForKey:strKey]) {
+            if (![params objectForKey:strKey]) {
                 if (strKey.length > 0)
                     [params setObject:strVal forKey:strKey];
             } else {
@@ -116,5 +116,24 @@
     }
     return params;
 }
+
++ (BOOL)string:(NSString *)string contains:(NSString *)substring {
+    if (string == nil || substring == nil) {
+        return NO;
+    }
+    return ([string rangeOfString:substring].location != NSNotFound);
+}
+
++ (BOOL)stringIsEmpty:(NSString*)str {
+    if (!str) return true;
+    if ([str isEqual:@""]) return true;
+    if ([[self trimmedString:str] isEqual:@""]) return true;
+    return false;
+}
+
++ (NSString*)trimmedString:(NSString*)str {
+    return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 
 @end

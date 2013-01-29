@@ -56,7 +56,7 @@ LB_DECLARE_DELEGATE_PROTOCOL_M(NSObject)
 }
 
 + (void)removeDelegate:(id)delegate {
-    LBLog(@"%@ removeDelegate:%@", NSStringFromClass([self class]), NSStringFromClass([delegate class]));
+    // LBLog(@"%@ removeDelegate:%@", NSStringFromClass([self class]), NSStringFromClass([delegate class]));
     LBZeroingWeakContainer *foundContainer = nil;
     for (LBZeroingWeakContainer *c in [self sharedInstance].delegates) {
         id checkDelegate = [c weakValue];

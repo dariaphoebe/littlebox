@@ -31,11 +31,11 @@
  
  The class does track "sessions", which are defined more or less as continuous
  periods of time in which the app is foregrounded. If a session ends (the app is
- backgrounded, or endSession is called explicitly), and timed events that are
+ backgrounded, or endSession is called explicitly), any timed events that are
  still running will be ended and logged. Note that changing the value of the
  userId property will cause a session rotation. It is up to your subclass
  implementation to use the value of sessionId if desired. Some analytics SDKs
- will handle session tracking for you and other's won't.
+ will handle session tracking for you and others won't.
  
  This class can also locally buffer events and upload them in batches to a
  custom remote endpoint. If you can host your own basic event collector, using

@@ -46,6 +46,9 @@
 + (NSString *)base64forData:(NSData*)theData;
 + (NSString *)urlEncodedParamStringForDict:(NSDictionary*)dict;
 + (NSMutableDictionary *)dictFromQueryString:(NSString *)queryString;
++ (BOOL)string:(NSString *)string contains:(NSString *)substring;
++ (BOOL)stringIsEmpty:(NSString*)str;
++ (NSString*)trimmedString:(NSString*)str;
 @end
 
 @interface LBUtils(date)

@@ -121,7 +121,7 @@ for (LBZeroingWeakContainer *c in immutableCopy) { \
 
 #define LB_DECLARE_DELEGATE_PROTOCOL_M(protocolName) \
 + (void)addDelegate:(id<protocolName>)delegate withOrder:(int)order { \
-    LBLog(@"%@ addDelegate:%@ order:%d", NSStringFromClass([self class]), NSStringFromClass([delegate class]), order); \
+    if (NO) LBLog(@"%@ addDelegate:%@ order:%d", NSStringFromClass([self class]), NSStringFromClass([delegate class]), order); \
     BOOL found = NO; \
     for (LBZeroingWeakContainer *c in [self sharedInstance].delegates) { \
         id checkDelegate = [c weakValue]; \
