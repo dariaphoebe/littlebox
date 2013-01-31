@@ -78,6 +78,13 @@
 
 +(void) setCorrectContentSizeOnScrollView:(UIScrollView*)scrollView ensureScrollable:(BOOL)ensureScrollable {
     if (!scrollView) return;
+    // preserve these values, then turn them off, which removes the two UIKit
+    // managed stretchable UIImageViews for the scroll indicators, allowing the
+    // iteration over subviews to be meaningful.
+    BOOL showsHorizontalScrollIndicator = scrollView.showsHorizontalScrollIndicator;
+    BOOL showsVerticalScrollIndicator = scrollView.showsVerticalScrollIndicator;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
     CGRect contentRect = CGRectZero;
     if (ensureScrollable) {
         contentRect = CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height);
@@ -92,6 +99,8 @@
                                  contentRect.size.height + 10.0f); // with 1.0 instead of 10.0 as the extra padding, the scroll indicators don't show when you scroll/bounce the scrollview.
     }
     scrollView.contentSize = contentRect.size;
+    scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator;
+    scrollView.showsVerticalScrollIndicator = showsVerticalScrollIndicator;
 }
 
 @end
