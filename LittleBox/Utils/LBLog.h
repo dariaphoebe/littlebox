@@ -16,6 +16,9 @@
  
  */
 
+// To make these methods universally available in your app, import this header
+// using your project's "...-Prefix.pch" file.
+
 // LBLog() is a replacement for NSLog, which will also log the function name and
 // line number, and will only log in DEBUG mode. Logging in DEBUG mode only is
 // useful to prevent verbose, sensitive, or otherwise problematic information
